@@ -1,0 +1,33 @@
+wczytaj(sumaSzukana)
+wczytaj(tablica[])
+wczytaj(tablicaDlugosc)
+inicjuj sumaPomocniczna
+inicjuj x, y
+inicjuj dlugoscMaksymalna
+inicjuj maxStop
+inicjuj maxStart
+x <-- 0 
+y <-- 0
+inicjuj z <-- 0
+dlugoscMaksymalna <-- 0
+dopóki x < tablicaDlugosc
+	sumaPomocniczna <-- 0
+	y <-- x
+	dopóki y < tablicaDlugosc
+		sumaPomocnicza <-- sumaPomocnicza + tablica[y]
+		jeżeli sumaPomocnicza = tablica[y] to
+			z <-- x
+			jeżeli z <= y to
+				wypisz(tablica[z])
+				z <-- z + 1
+			inicjuj dlugoscPodciagu <-- y + 1 - x
+			jeżeli dlugoscPodciagu  >  dlugoscMaksymalna to
+				dlugoscMaksymalna <-- dlugoscPodciagu
+				maxStart <-- x
+				maxStop <-- y
+		y <-- y  + 1
+	x <-- x + 1
+jeżeli maxStart <= maxStop
+	wypisz(tablica[maxStart])
+	maxStart <-- maxStart + 1
+wypisz(dlugoscMaksymalna)
