@@ -1,16 +1,30 @@
 
 #include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include <chrono>
+
 using namespace std;
 int main()
 {
 
-    int suma = 8;
-    int tablica[] = {0,6,5,1,-5,5,3,5,3,-2,0};
-    int dlugosc_tablicy = 11;
+    int suma = 1500;
+    int dlugosc_tablicy = 0;
     int maxDlugosc = 0;
     int maxStart =0;
     int maxStop = 0;
     bool pierwszyZnaleziony = false;
+    cout<<"podaj dlugosc tablicy"<<endl;
+    cin>> dlugosc_tablicy;
+    auto start = std::chrono::high_resolution_clock::now();
+    int tablica[dlugosc_tablicy];
+    srand(time(0));
+    for(int i = 0; i < dlugosc_tablicy; i++) {
+
+        tablica[i] = rand();
+        cout<<tablica[i]<<" ";
+
+    }
     for(int i =0; i  < dlugosc_tablicy; i++)
     {
     if(i==0) cout<<"Podciagi o sumie "<< suma<<" to: ";
@@ -45,15 +59,23 @@ int main()
         }
      }
     }
-    cout<<"."<<endl<<"Najdluzszy podciag to: "<<"[";
-    for(int x = maxStart; x <= maxStop; x++)
-    {
-        
-                if(x==maxStop)cout<<tablica[x];
-                else cout<<tablica[x]<<",";
-            
+    if(maxDlugosc!=0) {
+        cout<<"."<<endl<<"Najdluzszy podciag to: "<<"[";
+        for(int x = maxStart; x <= maxStop; x++)
+        {
+
+            if(x==maxStop)cout<<tablica[x];
+            else cout<<tablica[x]<<",";
+
+        }
+        cout<<"]";
+        cout<<" o dlugosci "<<maxDlugosc<<".";
     }
-    cout<<"]";
-    cout<<" o dlugosci "<<maxDlugosc<<".";
+    else cout<<"brak podciagow.";
+    cout<<endl;
+    auto end = std::chrono::high_resolution_clock::now();
+    chrono::duration<double,milli> elapsed = end - start;
+    cout<<elapsed.count();
+
     return 0;
 }
