@@ -1,33 +1,25 @@
 wczytaj(sumaSzukana)
 wczytaj(tablica[])
 wczytaj(tablicaDlugosc)
-inicjuj sumaPomocniczna
-inicjuj x, y
-inicjuj dlugoscMaksymalna
-inicjuj maxStop
-inicjuj maxStart
-x <-- 0 
-y <-- 0
+inicjuj sumaPomocniczna <-- 0 
+inicjuj dlugoscMaksymalna <-- 0
+inicjuj maxStop <-- 0 
+inicjuj maxStart <-- 0
 inicjuj z <-- 0
-dlugoscMaksymalna <-- 0
-dopóki x < tablicaDlugosc
+
+
+dla i <-- 0 do dlugoscTablicy - 1 powtarzaj
 	sumaPomocniczna <-- 0
-	y <-- x
-	dopóki y < tablicaDlugosc
-		sumaPomocnicza <-- sumaPomocnicza + tablica[y]
-		jeżeli sumaPomocnicza = tablica[y] to
-			z <-- x
-			jeżeli z <= y to
+	dla j <-- i do dlugoscTablicy - 1 powtarzaj
+		sumaPomocnicza <-- sumaPomocnicza + tablica[j]
+		jeżeli sumaPomocnicza = tablica[j] to
+			dla z <-- i do j powtarzaj 
 				wypisz(tablica[z])
-				z <-- z + 1
-			inicjuj dlugoscPodciagu <-- y + 1 - x
+			inicjuj dlugoscPodciagu <-- j + 1 - i
 			jeżeli dlugoscPodciagu  >  dlugoscMaksymalna to
 				dlugoscMaksymalna <-- dlugoscPodciagu
-				maxStart <-- x
-				maxStop <-- y
-		y <-- y  + 1
-	x <-- x + 1
-jeżeli maxStart <= maxStop
-	wypisz(tablica[maxStart])
-	maxStart <-- maxStart + 1
+				maxStart <-- i
+				maxStop <-- j
+dla k <-- maxStart do maxStop powtarzaj
+	wypisz(tablica[k])
 wypisz(dlugoscMaksymalna)
