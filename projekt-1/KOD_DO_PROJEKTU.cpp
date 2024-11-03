@@ -16,7 +16,7 @@ void algorytm(int dlugosc_tablicy, int suma) {
     srand(time(0));
     for(int i = 0; i < dlugosc_tablicy; i++) {
 
-        tablica[i] = rand();
+        tablica[i] = 0;//rand() %11 -5;
         cout<<tablica[i]<<" ";
 
     }
@@ -70,14 +70,14 @@ void algorytm(int dlugosc_tablicy, int suma) {
     cout<<endl;
     auto end = std::chrono::high_resolution_clock::now();
     chrono::duration<double,milli> elapsed = end - start;
-    cout<<elapsed.count();
+    cout<<elapsed.count()<<"ms";
 
 }
 int main()
 
 {
 
-    int suma = 1500;
+    int suma = 0;
     int dlugosc_tablicy = 0;
     cout<<"podaj dlugosc tablicy"<<endl;
     cin>> dlugosc_tablicy;

@@ -1,6 +1,0 @@
-milisekundy
-dlugosc tablicy = 10, milisekundy = 2.0929
-dlugosc tablicy = 100, milisekundy = 15.4947
-dlugosc tablicy = 1000, milisekundy  = 147.721
-dlugosc tablicy  = 10000, milisekundy = 1912.98
-dlugosc tablicy  = 100000, milisekundy  = 27470.6
