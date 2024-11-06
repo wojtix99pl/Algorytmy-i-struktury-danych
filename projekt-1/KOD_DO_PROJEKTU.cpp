@@ -10,12 +10,11 @@ void algorytm(int dlugosc_tablicy, int suma) {
     int maxStart = 0;
     int maxStop = 0;
     bool pierwszyZnaleziony = false;
-    auto start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now(); /// kod mierzący czas programu
     int tablica[dlugosc_tablicy];
     srand(time(0));
-    for (int i = 0; i < dlugosc_tablicy; i++) {
-        tablica[i] = 0; //rand() %11 -5;
-        cout << tablica[i] << " ";
+    for (int i = 0; i < dlugosc_tablicy; i++) {        /// Generowanie tablicy losowych liczb
+        tablica[i] = rand() %11 -5;
     }
     for (int i = 0; i < dlugosc_tablicy; i++) {
         if (i == 0) cout << "Podciagi o sumie " << suma << " to: ";
@@ -54,13 +53,15 @@ void algorytm(int dlugosc_tablicy, int suma) {
         cout << " o dlugosci " << maxDlugosc << ".";
     } else cout << "brak podciagow.";
     cout << endl;
-    auto end = std::chrono::high_resolution_clock::now();
-    chrono::duration<double, milli> elapsed = end - start;
-    cout << elapsed.count() << "ms";
+    auto end = std::chrono::high_resolution_clock::now(); /// kod mierzący czas programu
+    chrono::duration<double, milli> elapsed = end - start; /// kod mierzący czas programu
+    cout << elapsed.count() << "ms"; // czas programu w milisekundach
 }
 
 int main() {
+    cout<<"podaj sume"<<endl;
     int suma = 0;
+    cin>>suma;
     int dlugosc_tablicy = 0;
     cout << "podaj dlugosc tablicy" << endl;
     cin >> dlugosc_tablicy;
