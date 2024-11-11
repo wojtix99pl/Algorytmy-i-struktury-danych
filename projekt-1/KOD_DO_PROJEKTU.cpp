@@ -78,7 +78,7 @@ int algorytm(int tablica[], int suma, int dlugosc_tablicy) {
     cout << endl;
     auto end = std::chrono::high_resolution_clock::now(); /// kod mierzący czas programu
     chrono::duration<double, milli> elapsed = end - start; /// kod mierzący czas programu
-    cout << elapsed.count() << "ms"; // czas programu w milisekundach
+    cout << elapsed.count() << "ms" << endl; // czas programu w milisekundach
     return maxDlugosc;
 }
 
@@ -94,6 +94,8 @@ int *generateArray(int dlugosc_tablicy) {                ///// FUNKCJA DO GENERO
 void test1() {
     int tablica[] = {0,6,5,1,-5,5,3,5,3,-2,0};
     int wynik = algorytm(tablica,8,11);
+    if (wynik == 4) cout << "program dziala poprawnie"<<endl;
+    else cout << "program nie dziala poprawnie"<<endl;
 }
 void test2() {
     int *tablica = new int[10];
@@ -102,6 +104,8 @@ void test2() {
     }
     int wynik = algorytm(tablica,0,10);
     delete tablica;
+    if (wynik == 10) cout << "program dziala poprawnie"<<endl;
+    else cout << "program nie dziala poprawnie"<<endl;
 }
 int localSetData() {
     int dlugosc_tablicy = 0;
@@ -149,11 +153,11 @@ int main() {
     // delete tablica;                                        /////////GENEROWANIE TABLICY Z PLIKU
 
 
-     int suma = localSetData2();                          /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
-     int dlugosc_tablicy = localSetData();                /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
-     int *tablica = generateArray(dlugosc_tablicy);       /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
-     algorytm(tablica, suma, dlugosc_tablicy);          /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
-     delete tablica;                                     /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+   //  int suma = localSetData2();                          /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+   //  int dlugosc_tablicy = localSetData();                /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+   //  int *tablica = generateArray(dlugosc_tablicy);       /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+   //  algorytm(tablica, suma, dlugosc_tablicy);          /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+   //  delete tablica;                                     /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
 
    // test1();       /// TESTY
    //   test2();         /// TESTY
