@@ -92,7 +92,16 @@ int *generateArray(int dlugosc_tablicy) {                ///// FUNKCJA DO GENERO
 }
 
 void test1() {
-    //deklaruj tab
+    int tablica[] = {0,6,5,1,-5,5,3,5,3,-2,0};
+    int wynik = algorytm(tablica,8,11);
+}
+void test2() {
+    int *tablica = new int[10];
+    for (int i = 0; i < 10; i++) {
+        tablica[i] = 0;
+    }
+    int wynik = algorytm(tablica,0,10);
+    delete tablica;
 }
 int localSetData() {
     int dlugosc_tablicy = 0;
@@ -133,18 +142,22 @@ int fileLengthSeeker() {
     return i;
 }
 int main() {
-    int *tablica = fileArrayReader();                       /////////GENEROWANIE TABLICY Z PLIKU
-    int dlugosc_tablicy = fileLengthSeeker();               /////////GENEROWANIE TABLICY Z PLIKU
-    int suma = localSetData2();                             /////////GENEROWANIE TABLICY Z PLIKU
-
-    // int suma = localSetData2();                         /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
-    // int dlugosc_tablicy = localSetData();               /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
-    // int *tablica = generateArray(dlugosc_tablicy);       /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+   // int *tablica = fileArrayReader();                       /////////GENEROWANIE TABLICY Z PLIKU
+   // int dlugosc_tablicy = fileLengthSeeker();               /////////GENEROWANIE TABLICY Z PLIKU
+   // int suma = localSetData2();                             /////////GENEROWANIE TABLICY Z PLIKU
+    // algorytm(tablica, suma, dlugosc_tablicy);              /////////GENEROWANIE TABLICY Z PLIKU
+    // delete tablica;                                        /////////GENEROWANIE TABLICY Z PLIKU
 
 
+     int suma = localSetData2();                          /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+     int dlugosc_tablicy = localSetData();                /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+     int *tablica = generateArray(dlugosc_tablicy);       /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+     algorytm(tablica, suma, dlugosc_tablicy);          /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+     delete tablica;                                     /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
 
-    algorytm(tablica, suma, dlugosc_tablicy);
-    delete tablica;
+   // test1();       /// TESTY
+   //   test2();         /// TESTY
+
     fileReader.close();
     wynikFile.close();
     return 0;
