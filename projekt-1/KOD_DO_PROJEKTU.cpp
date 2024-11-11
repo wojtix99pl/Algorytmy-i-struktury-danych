@@ -2,22 +2,25 @@
 #include <cstdlib>
 #include <time.h>
 #include <chrono>
+#include <fstream>
 
 using namespace std;
+ifstream fileReader("tablica.txt");         //// PROSZE PODAC SCIEZKE DO PLIKU Z LICZBAMI
+ofstream wynikFile("wynikZadania.txt");     //// PLIK TEKSTOWY Z WYNIKIEM ZADANIA
 
-void algorytm(int dlugosc_tablicy, int suma) {
+
+int algorytm(int tablica[], int suma, int dlugosc_tablicy) {
     int maxDlugosc = 0;
     int maxStart = 0;
     int maxStop = 0;
     bool pierwszyZnaleziony = false;
     auto start = std::chrono::high_resolution_clock::now(); /// kod mierzący czas programu
-    int tablica[dlugosc_tablicy];
-    srand(time(0));
-    for (int i = 0; i < dlugosc_tablicy; i++) {        /// Generowanie tablicy losowych liczb
-        tablica[i] = rand() %11 -5;
-    }
+
     for (int i = 0; i < dlugosc_tablicy; i++) {
-        if (i == 0) cout << "Podciagi o sumie " << suma << " to: ";
+        if (i == 0) {
+            cout << "Podciagi o sumie " << suma << " to: ";
+            wynikFile << "Podciagi o sumie " << suma << " to: ";
+        }
         int sumaPomocnicza = 0;
         for (int j = i; j < dlugosc_tablicy; j++) {
             sumaPomocnicza += tablica[j];
@@ -25,14 +28,22 @@ void algorytm(int dlugosc_tablicy, int suma) {
                 if (!pierwszyZnaleziony) {
                     pierwszyZnaleziony = true;
                     cout << "[";
+                    wynikFile << "[";
                 } else {
                     cout << ", [";
+                    wynikFile << ", [";
                 }
                 for (int x = i; x <= j; x++) {
-                    if (x == j)cout << tablica[x];
-                    else cout << tablica[x] << ",";
+                    if (x == j) {
+                        cout << tablica[x];
+                        wynikFile << tablica[x];
+                    }
+                    else {
+                        wynikFile << tablica[x] <<",";
+                        cout << tablica[x] << ",";
+                    }
                 }
-
+                wynikFile <<"]";
                 cout << "]";
                 int dlugoscPodciagu = j + 1 - i;
                 if (dlugoscPodciagu > maxDlugosc) {
@@ -45,28 +56,96 @@ void algorytm(int dlugosc_tablicy, int suma) {
     }
     if (maxDlugosc != 0) {
         cout << "." << endl << "Najdluzszy podciag to: " << "[";
+        wynikFile << "." << endl << "Najdluzszy podciag to: " << "[";
         for (int x = maxStart; x <= maxStop; x++) {
-            if (x == maxStop)cout << tablica[x];
-            else cout << tablica[x] << ",";
+            if (x == maxStop) {
+                cout << tablica[x];
+                wynikFile << tablica[x];
+            }
+            else {
+                cout << tablica[x] << ",";
+                wynikFile << tablica[x] << ",";
+            }
         }
         cout << "]";
+        wynikFile <<"]";
         cout << " o dlugosci " << maxDlugosc << ".";
-    } else cout << "brak podciagow.";
+        wynikFile<<" o dlugosci "<<maxDlugosc<< ".";
+    } else {
+        cout << "brak podciagow.";
+        wynikFile<<"brak podciagow.";
+    }
     cout << endl;
     auto end = std::chrono::high_resolution_clock::now(); /// kod mierzący czas programu
     chrono::duration<double, milli> elapsed = end - start; /// kod mierzący czas programu
     cout << elapsed.count() << "ms"; // czas programu w milisekundach
+    return maxDlugosc;
 }
 
-int main() {
-    cout<<"podaj sume"<<endl;
-    int suma = 0;
-    cin>>suma;
+int *generateArray(int dlugosc_tablicy) {                ///// FUNKCJA DO GENEROWANIA LOSOWYCH TABLIC
+    int *tablica = new int[dlugosc_tablicy];
+    srand(time(0));
+    for (int i = 0; i < dlugosc_tablicy; i++) {
+        tablica[i] = rand() % 11 - 5;
+    }
+    return tablica;
+}
+
+void test1() {
+    //deklaruj tab
+}
+int localSetData() {
     int dlugosc_tablicy = 0;
     cout << "podaj dlugosc tablicy" << endl;
     cin >> dlugosc_tablicy;
-    algorytm(dlugosc_tablicy, suma);
+
+    return dlugosc_tablicy;
+}
+int localSetData2() {
+    cout << "podaj sume" << endl;
+    int suma = 0;
+    cin >> suma;
+    return suma;
+}
+int *fileArrayReader() {
+    int i =0, number =0, y =0;
+    while(fileReader >> number) {
+        i++;
+    }
+    int* tablica = new int[i];
+    fileReader.clear();
+    fileReader.seekg(0);
+    while (fileReader >> number) {
+        tablica[y] = number;
+        cout<<tablica[y]<<endl;
+        y++;
+    }
+    fileReader.clear();
+    fileReader.seekg(0);
+    return tablica;
+}
+int fileLengthSeeker() {
+    int number =0;
+    int i = 0;
+    while(fileReader >> number) i++;
+    fileReader.clear();
+    fileReader.seekg(0);
+    return i;
+}
+int main() {
+    int *tablica = fileArrayReader();                       /////////GENEROWANIE TABLICY Z PLIKU
+    int dlugosc_tablicy = fileLengthSeeker();               /////////GENEROWANIE TABLICY Z PLIKU
+    int suma = localSetData2();                             /////////GENEROWANIE TABLICY Z PLIKU
+
+    // int suma = localSetData2();                         /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+    // int dlugosc_tablicy = localSetData();               /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+    // int *tablica = generateArray(dlugosc_tablicy);       /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
 
 
+
+    algorytm(tablica, suma, dlugosc_tablicy);
+    delete tablica;
+    fileReader.close();
+    wynikFile.close();
     return 0;
 }

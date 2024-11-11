@@ -1,0 +1,2 @@
+Podciagi o sumie 5 to: [5], [5,0], [3,2], [5], [5,0], [0,6,-1], [0,6,-1,0], [6,-1], [6,-1,0], [0,5], [5].
+Najdluzszy podciag to: [0,6,-1,0] o dlugosci 4.
