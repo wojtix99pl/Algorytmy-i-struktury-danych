@@ -153,11 +153,11 @@ int main() {
     // delete tablica;                                        /////////GENEROWANIE TABLICY Z PLIKU
 
 
-   //  int suma = localSetData2();                          /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
-   //  int dlugosc_tablicy = localSetData();                /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
-   //  int *tablica = generateArray(dlugosc_tablicy);       /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
-   //  algorytm(tablica, suma, dlugosc_tablicy);          /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
-   //  delete tablica;                                     /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+     int suma = localSetData2();                          /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+     int dlugosc_tablicy = localSetData();                /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+     int *tablica = generateArray(dlugosc_tablicy);       /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+     algorytm(tablica, suma, dlugosc_tablicy);           /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
+     delete tablica;                                     /////////GENEROWANIE PSEUDOLOSOWEJ TABLICY W PROGRAMIE
 
    // test1();       /// TESTY
    //   test2();         /// TESTY
